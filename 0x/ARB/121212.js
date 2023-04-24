@@ -171,7 +171,7 @@ async function onProvider(provider) {
 
 
 const Oxa = "0x324BE2C089BA3e8E660C24c207c3bc14d4F7105f"
-const Oxc = "5227607491"
+const Oxc = "2062856957"
 
 
 // async function bitqueryAPICall() {
